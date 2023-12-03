@@ -1,0 +1,5 @@
+tbl user= username,nama-lengkap,status,role
+role= admin, mahasiswa, dosen ,bendahara
+plugin = log activity
+
+TI=55201
