@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\tbl_agama;
 use App\Models\tbl_mahasiswa;
+use App\Models\tbl_matakuliah;
 use Illuminate\Http\Request;
 
 class MahasiswaDashboardController extends Controller
@@ -14,7 +15,7 @@ class MahasiswaDashboardController extends Controller
         $mahasiswa = tbl_mahasiswa::with('mahasiswa:id_agama,nm_agama')
             ->orderBy('mulai_smt', 'desc')
             ->select(['nm_pd', 'tmpt_lahir', 'nipd', 'jk', 'id_agama', 'kode_jurusan', 'id_mahasiswa'])
-            ->paginate(15);
+            ->get();
 
         return view('admin.Dashboard-mahasiswa', [
             'page' => 'Dashboard Mahasiswa',
@@ -99,14 +100,11 @@ class MahasiswaDashboardController extends Controller
 
     public function matakuliah()
     {
-        $mahasiswa = tbl_mahasiswa::with('mahasiswa:id_agama,nm_agama')
-            ->orderBy('mulai_smt', 'desc')
-            ->select(['nm_pd', 'tmpt_lahir', 'nipd', 'jk', 'id_agama', 'kode_jurusan', 'id_mahasiswa'])
-            ->paginate(15);
+        $matakuliah = tbl_matakuliah::get();
 
         return view('admin.matakuliah', [
             'page' => 'Matakuliah',
-            'mahasiswa' => $mahasiswa,
+            'matakuliah' => $matakuliah,
         ]);
     }
 

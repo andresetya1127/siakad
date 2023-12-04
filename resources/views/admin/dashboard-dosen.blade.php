@@ -11,18 +11,22 @@
                 <div class="table-responsive">
                     <table class="table table-hover mb-0">
                         <thead class="thead-default">
-                            <tr>
-                                <th>#</th>
-                                <th>NIM</th>
-                                <th>Nama</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Email</th>
-                                <th>No.Hp</th>
-                                <th>Prodi</th>
-                            </tr>
+                            {{ getThead(['#', 'nama', 'Alamat']) }}
                         </thead>
                         <tbody>
-                            {{ getLoop($user, ['add.dasd', 'show.link'], ['option', 'name.link=dosen-detail.name', 'email', 'password']) }}
+                            {{-- {{ getLoop($mahasiswa, [
+                                'option' => [
+                                    'show' => true,
+                                    'edit' => 'lin',
+                                    'delete' => true,
+                                ],
+                                'nm_pd|link' => 'mhs.detail|id_mahasiswa',
+                                'tmpt_lahir' => true,
+                                'nipd' => true,
+                                'jk' => true,
+                                'nm_agama|rel' => 'mahasiswa',
+                                'kode_jurusan' => true,
+                            ]) }} --}}
                         </tbody>
                     </table>
                 </div>

@@ -11,10 +11,21 @@
                 <div class="table-responsive">
                     <table class="table table-hover mb-0">
                         <thead class="thead-default table-dark ">
-                            {{ getthead(['#', 'nama', 'Tempat Lahir', 'NIM', 'Jenis Kelamin', 'Agama', 'Jurusan']) }}
+                            {{ getThead(['#', 'Kode MK', 'Nama Matakuliah', 'Bobot MK(sks)', 'Program Studi', 'Jenis MK', 'Aksi']) }}
                         </thead>
                         <tbody>
-
+                            {{ getLoop($matakuliah, [
+                                'number++' => true,
+                                'kode_mk' => true,
+                                'nama_mk' => true,
+                                'sks_tatap_muka+sks_praktek_lapangan' => true,
+                                'kode_prodi' => true,
+                                'jenis_mk' => true,
+                                'option' => [
+                                    'edit' => 'mhs.grade|id_matkul',
+                                    'show' => 'admin.kelas',
+                                ],
+                            ]) }}
                         </tbody>
                     </table>
                 </div>

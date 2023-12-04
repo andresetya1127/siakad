@@ -90,7 +90,7 @@ function linkButton($link = false,  $color = false, $text = false, $icon = false
 function getLoop($data = [], $fields = [])
 {
     $table = null;
-
+    $no = 1;
     if ($data  || $fields) {
         foreach ($data as $key) {
             $table .= '<tr>';
@@ -98,24 +98,33 @@ function getLoop($data = [], $fields = [])
                 $table .= '<td>';
                 if ($field == 'option') {
                     foreach ($record as $option => $opt) {
+                        $str = strstr($opt, '|') ? explode('|', $opt, 2) : $opt;
+                        $url = is_array($str) ? url($str[0], $key[$str[1]]) : $str;
                         if ($option == 'edit') {
-                            $table .= linkButton($opt . "/" . $key->id_mahasiswa, "btn-subtle-primary", "", "fa-pen-to-square");
+                            $table .= linkButton($url, "btn-subtle-primary", "", "fa-pen-to-square");
                         } elseif ($option == 'delete') {
-                            $table .= linkButton($opt, "btn-subtle-danger", "", "fa-trash");
+                            $table .= linkButton($url, "btn-subtle-danger", "", "fa-trash");
                         } elseif ($option == 'show') {
-                            $table .= linkButton($opt, "btn-subtle-dark", "", "fa-eye");
+                            $table .= linkButton($url, "btn-subtle-info", "", "fa-eye");
                         }
                     }
+                } elseif (!$record) {
+                    $table .= '<i class="fa-solid fa-eye-slash"></i>';
+                } elseif ($field == 'number++') {
+                    $table .= $no++;
+                } elseif (strstr($field, '+')) {
+                    $sum = explode('+', $field, 2);
+                    $table .= $key[$sum[0]] + $key[$sum[1]];
                 } elseif (strstr($field, '|link')) {
                     $str = explode('|', $field, 2);
                     $link = explode('|', $record, 2);
                     $table .= linkButton(route($link[0], $key[$link[1]]), false, $key[$str[0]], false);
                 } elseif (strstr($field, '|rel')) {
-                    $str = explode('|rel', $field, 2);
-                    $table .= $key[$record][$str[0]];
+                    $str = explode('|', $field, 2);
+                    $table .= !empty($key[$record][$str[0]]) ? $key[$record]->nm_agama : '';
                 } elseif (strstr($field, 'jk') || strstr($field, 'jenis_kelamin')) {
                     $table .= $key[$field] == 'L' ? 'Laki-Laki' : 'Prempuan';
-                } elseif (strstr($field, 'kode_jurusan') || strstr($field, 'kd_jurusan')) {
+                } elseif (strstr($field, 'kode_jurusan') || strstr($field, 'kd_jurusan') || strstr($field, 'kd_prodi') || strstr($field, 'kode_prodi')) {
                     $table .= $key[$field] == '55201' ? 'Teknik Informatika' : 'Sistem Informasi';
                 } else {
                     $table .= $key[$field];
