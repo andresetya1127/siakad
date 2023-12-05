@@ -4,7 +4,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CaptchaServiceController;
 use App\Http\Controllers\DosenDashboardController;
+use App\Http\Controllers\KelasKuliahController;
+use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\MahasiswaDashboardController;
+use App\Http\Controllers\MataKuliahController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -44,15 +47,29 @@ Route::controller(AdminController::class)->group(function () {
 // mahasiswa Dashboard
 Route::controller(MahasiswaDashboardController::class)->group(function () {
     Route::get('/mahasiswa-dashboard', 'index')->name('mhs.dashboard');
-    Route::get('/mahasiswa-detail/{id}', 'detail_mahasiwa')->name('mhs.detail');
+    Route::get('/mahasiswa-detail/{id}', 'detail_mahasiswa')->name('mhs.detail');
     Route::get('/krs-mahasiswa/{id}', 'krs_mahasiswa')->name('mhs.krs');
     Route::get('/aktivitas-mahasiswa/{id}', 'aktivitas_mhs')->name('mhs.activity');
     Route::get('/nilai-mhs/{id}', 'nilai_mhs')->name('mhs.grade');
     Route::get('/transkrip-mhs/{id}', 'transkrip_mhs')->name('mhs.transkrip');
     Route::get('/bimbingan-mhs/{id}', 'bimbingan_mhs')->name('mhs.guidance');
+});
+
+// Matakuliah Dashboard
+Route::controller(MataKuliahController::class)->group(function () {
     Route::get('/perkuliahan-matakuliah', 'matakuliah')->name('admin.matakuliah');
-    Route::get('/perkuliahan-kurukulum', 'kurikulum')->name('admin.kurikulum');
+});
+
+// Kelas Kuliah Dashboard
+Route::controller(KelasKuliahController::class)->group(function () {
     Route::get('/perkuliahan-kelas', 'kelas_kuliah')->name('admin.kelas');
+});
+
+// Kurikulum Dashboard
+Route::controller(KurikulumController::class)->group(function () {
+    Route::get('/perkuliahan-kurukulum', 'kurikulum')->name('admin.kurikulum');
+    Route::get('/tambah-kurukulum', 'tambah_kurikulum')->name('add.kurikulum');
+    Route::post('/save-kurikulum', 'save_kurikulum')->name('save.kurikulum');
 });
 
 // Dosen Dashboard

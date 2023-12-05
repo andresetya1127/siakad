@@ -11,7 +11,7 @@ class DosenDashboardController extends Controller
     {
         $user = User::get();
 
-        return view('admin.dashboard-dosen', [
+        return view('admin.dosen.dashboard-dosen', [
             'page' => 'Dashboard Dosen',
             'user' => $user,
         ]);
@@ -20,7 +20,7 @@ class DosenDashboardController extends Controller
     public function show($data)
     {
 
-        return view('admin.dosen-detail', [
+        return view('admin.dosen.dosen-detail', [
             'page' => 'Detail Dosen'
         ]);
     }

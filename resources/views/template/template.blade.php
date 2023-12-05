@@ -72,7 +72,7 @@
     <div class="rightbar-overlay"></div>
 
     <!-- JAVASCRIPT -->
-    {{ js_(['jquery', 'bootstrap-bundle', 'metis-menu', 'simplebar', 'waves', 'app', 'app-custom']) }}
+    {{ js_(['jquery', 'bootstrap-bundle', 'metis-menu', 'simplebar', 'waves', 'app', 'app-custom', 'counter']) }}
 
     @yield('custom_script')
 

@@ -5,7 +5,7 @@
             <div class="card-body">
                 <div class="text-end my-3">
                     @php
-                        echo linkButton(route('admin.index'), 'btn-success', 'Tambah', 'fa-plus');
+                        echo linkButton(route('add.kurikulum'), 'btn-success', 'Tambah', 'fa-plus');
                     @endphp
                 </div>
                 <div class="table-responsive">

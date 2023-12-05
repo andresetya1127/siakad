@@ -17,18 +17,18 @@ class MahasiswaDashboardController extends Controller
             ->select(['nm_pd', 'tmpt_lahir', 'nipd', 'jk', 'id_agama', 'kode_jurusan', 'id_mahasiswa'])
             ->get();
 
-        return view('admin.Dashboard-mahasiswa', [
+        return view('admin.mahasiswa.Dashboard-mahasiswa', [
             'page' => 'Dashboard Mahasiswa',
             'mahasiswa' => $mahasiswa,
         ]);
     }
 
-    public function detail_mahasiwa($data)
+    public function detail_mahasiswa($data)
     {
         $agama = tbl_agama::get();
         $mahasiswa = tbl_mahasiswa::where('id_mahasiswa', $data)->first();
 
-        return view('admin.profile-mahasiswa', [
+        return view('admin.mahasiswa.profile-mahasiswa', [
             'page' => 'Profil Mahasiswa',
             'mahasiswa' => $mahasiswa,
             'agama' => $agama
@@ -41,7 +41,7 @@ class MahasiswaDashboardController extends Controller
         $agama = tbl_agama::get();
         $mahasiswa = tbl_mahasiswa::where('id_mahasiswa', $data)->first();
 
-        return view('admin.krs-mahasiswa', [
+        return view('admin.mahasiswa.krs-mahasiswa', [
             'page' => 'KRS Mahasiswa',
             'mahasiswa' => $mahasiswa,
             'agama' => $agama
@@ -54,7 +54,7 @@ class MahasiswaDashboardController extends Controller
         $agama = tbl_agama::get();
         $mahasiswa = tbl_mahasiswa::where('id_mahasiswa', $data)->first();
 
-        return view('admin.aktivitas-mahasiswa', [
+        return view('admin.mahasiswa.aktivitas-mahasiswa', [
             'page' => 'Aktivitas Mahasiswa',
             'mahasiswa' => $mahasiswa,
             'agama' => $agama
@@ -67,7 +67,7 @@ class MahasiswaDashboardController extends Controller
         $agama = tbl_agama::get();
         $mahasiswa = tbl_mahasiswa::where('id_mahasiswa', $data)->first();
 
-        return view('admin.nilai-mahasiswa', [
+        return view('admin.mahasiswa.nilai-mahasiswa', [
             'page' => 'Nilai Mahasiswa',
             'mahasiswa' => $mahasiswa,
             'agama' => $agama
@@ -79,7 +79,7 @@ class MahasiswaDashboardController extends Controller
         $agama = tbl_agama::get();
         $mahasiswa = tbl_mahasiswa::where('id_mahasiswa', $data)->first();
 
-        return view('admin.transkrip-mahasiswa', [
+        return view('admin.mahasiswa.transkrip-mahasiswa', [
             'page' => 'Transkrip Mahasiswa',
             'mahasiswa' => $mahasiswa,
             'agama' => $agama
@@ -91,46 +91,10 @@ class MahasiswaDashboardController extends Controller
         $agama = tbl_agama::get();
         $mahasiswa = tbl_mahasiswa::where('id_mahasiswa', $data)->first();
 
-        return view('admin.bimbingan-mahasiswa', [
+        return view('admin.mahasiswa.bimbingan-mahasiswa', [
             'page' => 'Bimbingan Dosen PA',
             'mahasiswa' => $mahasiswa,
             'agama' => $agama
-        ]);
-    }
-
-    public function matakuliah()
-    {
-        $matakuliah = tbl_matakuliah::get();
-
-        return view('admin.matakuliah', [
-            'page' => 'Matakuliah',
-            'matakuliah' => $matakuliah,
-        ]);
-    }
-
-    public function kurikulum()
-    {
-        $mahasiswa = tbl_mahasiswa::with('mahasiswa:id_agama,nm_agama')
-            ->orderBy('mulai_smt', 'desc')
-            ->select(['nm_pd', 'tmpt_lahir', 'nipd', 'jk', 'id_agama', 'kode_jurusan', 'id_mahasiswa'])
-            ->paginate(15);
-
-        return view('admin.kurikulum', [
-            'page' => 'Kurikulum',
-            'mahasiswa' => $mahasiswa,
-        ]);
-    }
-
-    public function kelas_kuliah()
-    {
-        $mahasiswa = tbl_mahasiswa::with('mahasiswa:id_agama,nm_agama')
-            ->orderBy('mulai_smt', 'desc')
-            ->select(['nm_pd', 'tmpt_lahir', 'nipd', 'jk', 'id_agama', 'kode_jurusan', 'id_mahasiswa'])
-            ->paginate(15);
-
-        return view('admin.kelas-kuliah', [
-            'page' => 'Kurikulum',
-            'mahasiswa' => $mahasiswa,
         ]);
     }
 }

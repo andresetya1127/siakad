@@ -12,13 +12,15 @@ function css_($pakage)
             // =========================== Without CDN =======================
 
             'bootstrap' => '<link href="' . $dir . '/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />',
-            'app' => '<link href="' . $dir . '/app.min.css" id="app-style" rel="stylesheet" type="text/css" />',
+            'app' => '<link href="' . $dir . '/app.min.css"  rel="stylesheet" type="text/css" />',
 
             // =========================== With CDN =======================
 
             'icons' => '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.3.67/css/materialdesignicons.min.css" />',
+            'select2' => '<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />',
             'font-awesome' => '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>',
-            'animate' => '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />'
+            'animate' => '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />',
+            'select-bootstrap' => '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">'
         ];
 
         // print asset
@@ -51,10 +53,16 @@ function js_($pakage)
             'waves' => '<script src="' . $dir . '/libs/node-waves/waves.min.js"></script>',
             'app' => '<script src="' . $dir . '/js/app.js"></script>',
             'app-custom' => '<script src="' . $dir . '/js/app-custom.js"></script>',
+            'counter' => '<script src="' . $dir . '/js/counter.js"></script>',
 
             // =========================== With CDN =======================
-            'captcha' => '<script src="https://www.google.com/recaptcha/api.js" async defer></script>'
+            'sweatalert' => '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>',
+            'select2' => '<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>',
+            'validate' => ' <script src="' . $dir . '/js/pages/form-validation.init.js"></script>',
+            'parseley' => '<script src="' . $dir . '/libs/parsleyjs/parsley.min.js"></script',
+            'captcha' => '<script src="https://www.google.com/recaptcha/api.js" async defer></script>',
         ];
+
 
         // print asset
         foreach ($pakage as $pkg) {
