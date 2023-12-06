@@ -1,4 +1,7 @@
 @extends('template.template')
+@section('custom_style')
+    {{ css_(['select2', 'select-bootstrap']) }}
+@endsection
 
 @section('content')
     <div class="col-12">
@@ -34,25 +37,27 @@
                             <span class="error"></span>
                         </div>
 
-                        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                        <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
                             <label for="" class="form-label pt-0">Jumlah SKS(*wajib)</label>
                             <input class="form-control" type="number" value="{{ old('sks_wajib') }}" name="sks_wajib"
                                 placeholder="Jumlah SKS wajib...">
                             <span class="error"></span>
                         </div>
 
-                        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                        <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
                             <label for="" class="form-label pt-0">Jumlah SKS(*pilihan)</label>
                             <input class="form-control" type="number" name="sks_pilihan"
                                 placeholder="Jumlah SKS Pilihan...">
                             <span class="error"></span>
                         </div>
 
-                        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                        <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
                             <label for="" class="form-label pt-0">Masa berlaku</label>
                             <select name="masa_berlaku" class="select2 form-control" style="width: 100%;">
                                 <option disabled hidden selected>Masa Berlaku</option>
-                                <option value="2022">Masa 2022</option>
+                                @foreach ($semester as $smt)
+                                    <option value="{{ $smt->semester }}">nama-semester</option>
+                                @endforeach
                             </select>
                             <span class="error"></span>
                         </div>
@@ -62,9 +67,9 @@
                         <button type="submit" class="btn btn-subtle-success">
                             <i class="mdi mdi-content-save"></i> Simpan
                         </button>
-                        <button type="button" class="btn btn-subtle-danger">
+                        <a href="{{ url()->previous() }}" class="btn btn-subtle-danger">
                             <i class="mdi mdi mdi-close"></i> Batal
-                        </button>
+                        </a>
                     </div>
                 </form>
             </div>
@@ -74,7 +79,4 @@
 
 @section('custom_script')
     {{ js_(['sweatalert', 'select2']) }}
-@endsection
-@section('custom_style')
-    {{ css_(['select2', 'select-bootstrap']) }}
 @endsection

@@ -69,7 +69,9 @@ Route::controller(KelasKuliahController::class)->group(function () {
 Route::controller(KurikulumController::class)->group(function () {
     Route::get('/perkuliahan-kurukulum', 'kurikulum')->name('admin.kurikulum');
     Route::get('/tambah-kurukulum', 'tambah_kurikulum')->name('add.kurikulum');
+    Route::get('/result', 'cari_kurikulum')->name('cari.kurikulum');
     Route::post('/save-kurikulum', 'save_kurikulum')->name('save.kurikulum');
+    Route::get('/view-kurikulum/{id}', 'view_kurikulum')->name('view.kurikulum');
 });
 
 // Dosen Dashboard

@@ -10,4 +10,19 @@ class tbl_mk_kurikulum extends Model
     use HasFactory;
     protected $table = "tbl_mk_kurikulum";
     protected $primaryKey = "id_mk_kur";
+
+    /**
+     * Get all of the comments for the tbl_mk_kurikulum
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    /**
+     * Get all of the comments for the tbl_mk_kurikulum
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function matakuliah()
+    {
+        return $this->hasOne(tbl_matakuliah::class, 'kode_mk', 'kode_mk');
+    }
 }
