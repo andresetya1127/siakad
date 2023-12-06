@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Fungsi Load css
+ */
 
 function css_($pakage)
 {
@@ -34,6 +37,10 @@ function css_($pakage)
         return abort('404');
     }
 }
+
+/**
+ * Fungsi Load JS
+ */
 
 function js_($pakage)
 {
