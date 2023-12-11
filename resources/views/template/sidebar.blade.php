@@ -36,7 +36,7 @@
                         </li>
 
                         <li>
-                            <a href="calendar.html" class=" waves-effect">
+                            <a href="{{ route('priode.index') }}" class=" waves-effect">
                                 <i class="mdi mdi-cog-play-outline"></i>
                                 <span>Setting Periode</span>
                             </a>

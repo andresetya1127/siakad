@@ -8,6 +8,7 @@ use App\Http\Controllers\KelasKuliahController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\MahasiswaDashboardController;
 use App\Http\Controllers\MataKuliahController;
+use App\Http\Controllers\PriodeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -57,7 +58,14 @@ Route::controller(MahasiswaDashboardController::class)->group(function () {
 
 // Matakuliah Dashboard
 Route::controller(MataKuliahController::class)->group(function () {
-    Route::get('/perkuliahan-matakuliah', 'matakuliah')->name('admin.matakuliah');
+    Route::get('/perkuliahan-matakuliah', 'index')->name('admin.matakuliah');
+    Route::get('/result-matakuliah', 'cari_matakuliah')->name('cari.matakuliah');
+    Route::get('/tambah-matakuliah', 'tambah_matakuliah')->name('tambah.matakuliah');
+    Route::post('/simpan-matakuliah', 'save_matakuliah')->name('save.matakuliah');
+    Route::get('/edit-matakuliah/{id}', 'edit_matakuliah')->name('edit.matakuliah');
+    Route::put('/update-matakuliah/{id_mk}', 'update_matakuliah')->name('update.matakuliah');
+    Route::get('/delete-matakuliah/{id_mk}', 'delete_matakuliah')->name('delete.matakuliah');
+    Route::get('/delete-matakuliah', 'trash_matakuliah')->name('trash.matakuliah');
 });
 
 // Kelas Kuliah Dashboard
@@ -67,15 +75,23 @@ Route::controller(KelasKuliahController::class)->group(function () {
 
 // Kurikulum Dashboard
 Route::controller(KurikulumController::class)->group(function () {
-    Route::get('/perkuliahan-kurukulum', 'kurikulum')->name('admin.kurikulum');
+    Route::get('/perkuliahan-kurukulum', 'index')->name('admin.kurikulum');
     Route::get('/tambah-kurukulum', 'tambah_kurikulum')->name('add.kurikulum');
-    Route::get('/result', 'cari_kurikulum')->name('cari.kurikulum');
-    Route::post('/save-kurikulum', 'save_kurikulum')->name('save.kurikulum');
-    Route::get('/view-kurikulum/{id}', 'view_kurikulum')->name('view.kurikulum');
+    Route::get('/result-kurikulum', 'cari_kurikulum')->name('cari.kurikulum');
+    Route::post('/save-kurikulum', 'simpan_kurikulum')->name('save.kurikulum');
+    Route::get('/view-kurikulum/{id}', 'detail_kurikulum')->name('view.kurikulum');
+    Route::get('/add-matakuliah-kurikulum/{id}/{prodi}', 'tambah_mk_kurikulum')->name('add.kur.matakuliah');
+    Route::post('/save-matakuliah-kurikulum/{id}/{prodi}', 'simpan_mk_kurikulum')->name('save.kur.matakuliah');
+    Route::get('/delete-matakuliah-kurikulum/{id}/{id_kur}', 'hapus_mk_kurikulum')->name('delete.kur.matakuliah');
 });
 
 // Dosen Dashboard
 Route::controller(DosenDashboardController::class)->group(function () {
     Route::get('/dosen-dashboard', 'index')->name('dosen.dashboard');
     Route::get('/dosen-detail/{id}', 'show')->name('dosen.detail');
+});
+
+// Priode
+Route::controller(PriodeController::class)->group(function () {
+    Route::get('/priode', 'index')->name('priode.index');
 });

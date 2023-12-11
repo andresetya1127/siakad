@@ -61,6 +61,7 @@ function js_($pakage)
             'app' => '<script src="' . $dir . '/js/app.js"></script>',
             'app-custom' => '<script src="' . $dir . '/js/app-custom.js"></script>',
             'counter' => '<script src="' . $dir . '/js/counter.js"></script>',
+            'tempory' => '<script src="' . $dir . '/js/tempory.js"></script>',
 
             // =========================== With CDN =======================
             'sweatalert' => '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>',
@@ -93,7 +94,7 @@ function js_($pakage)
  * custom  $field.link=URL.fiel yang dicari
  */
 
-function linkButton($link = false,  $color = false, $text = false, $icon = false,)
+function linkButton($link = false,  $color = false, $text = false, $icon = false)
 {
     if (!$link) return "";
     $class = $color ? "class='me-2 btn $color'" : '';
@@ -113,13 +114,13 @@ function getLoop($data, $fields)
             if ($field == 'option') {
                 foreach ($record as $option => $opt) {
                     $str = strstr($opt, '|') ? explode('|', $opt, 2) : $opt;
-                    $url = is_array($str) ? url($str[0], $key[$str[1]]) : $str;
+                    $url = is_array($str) ? route($str[0], $key[$str[1]]) : $str;
                     if ($option == 'edit') {
-                        $table .= linkButton($url, "btn-subtle-primary", "", "fa-pen-to-square");
+                        $table .= linkButton($url, "btn-subtle-primary btn-edit", "", "fa-pen-to-square");
                     } elseif ($option == 'delete') {
-                        $table .= linkButton($url, "btn-subtle-danger", "", "fa-trash");
+                        $table .= linkButton($url, "btn-subtle-danger btn-delete", "", "fa-trash");
                     } elseif ($option == 'show') {
-                        $table .= linkButton($url, "btn-subtle-info", "", "fa-eye");
+                        $table .= linkButton($url, "btn-subtle-info btn-show", "", "fa-eye");
                     }
                 }
             } elseif (!$record) {

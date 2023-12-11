@@ -31,7 +31,11 @@
                     <!-- start page title -->
                     <div class="row">
                         <div class="col-12">
-                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                            <div class="page-title-box d-flex align-items-center gap-3">
+                                @isset($btnBack)
+                                <a href="{{ url()->previous() }}" class="btn btn-danger">
+                                    <i class="fa fa-arrow-left"></i></a>
+                                @endisset
                                 <h4 class="mb-0 font-size-18">{{ $page }}</h4>
                             </div>
                         </div>
@@ -39,6 +43,7 @@
 
                     <!-- page-content -->
                     <div class="row">
+                        <div id="session-get" data-value="{{ Session::get('msg') }}" data-type="{{ Session::get('type') }}"></div>
                         @yield('content')
                     </div>
 
@@ -52,6 +57,7 @@
                         <div class="col-sm-6">
                             <script>
                                 document.write(new Date().getFullYear())
+
                             </script> © SIAKAD-STMIK Lombok.
                         </div>
                         <div class="col-sm-6">
@@ -72,10 +78,11 @@
     <div class="rightbar-overlay"></div>
 
     <!-- JAVASCRIPT -->
-    {{ js_(['jquery', 'bootstrap-bundle', 'metis-menu', 'simplebar', 'waves', 'app', 'app-custom', 'counter']) }}
+    {{ js_(['jquery', 'bootstrap-bundle', 'metis-menu', 'simplebar', 'waves', 'app', 'counter','sweatalert']) }}
 
     @yield('custom_script')
 
+    {{ js_(['app-custom']) }}
 
 </body>
 

@@ -84,8 +84,7 @@
                 </div>
             </div>
 
-            <div id="login-bg"
-                class="col-lg-8 p-0 vh-100 d-flex justify-content-center bg-primary animate__animated animate__bounceInDown">
+            <div id="login-bg" class="col-lg-8 p-0 vh-100 d-flex justify-content-center bg-primary">
                 <img src="{{ asset('assets/images/meeting.svg') }}" alt="">
             </div>
             <!-- end col -->
