@@ -5,9 +5,9 @@
     <div class="card-body">
         <div class="my-3 text-end">
             @php
-            echo linkButton(route('tambah.matakuliah'), 'btn-info', 'Trash', 'fa-trash-arrow-up');
-            echo linkButton(route('tambah.matakuliah'), 'btn-info', 'PDF', 'fa-print');
-            echo linkButton(route('tambah.matakuliah'), 'btn-info', 'Excel', 'fa-file-csv');
+            echo linkButton(route('tambah.matakuliah'), 'me-2 btn-subtle-info', 'Trash', 'fa-trash-arrow-up');
+            echo linkButton(route('tambah.matakuliah'), 'me-2 btn-subtle-info', 'PDF', 'fa-print');
+            echo linkButton(route('tambah.matakuliah'), 'me-2 btn-subtle-info', 'Excel', 'fa-file-csv');
             @endphp
         </div>
         <div class="table-responsive">
@@ -25,7 +25,6 @@
                 </tbody>
             </table>
 
-            <!--Pagination -->
             <div class="d-flex justify-content-between mt-4">
                 <div class="">
                     <span>Showing <b>{{ $matakuliah->currentPage() * $matakuliah->count() }}</b> of
@@ -36,7 +35,6 @@
                 {{ $matakuliah->links() }}
 
             </div>
-            <!--End Pagination -->
 
         </div>
     </div>

@@ -4,14 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MatakuliahRules;
 use App\Models\tbl_matakuliah;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class MataKuliahController extends Controller
 {
+    /*
+    |---------------------------------------------------------------------------------------|
+    |Protected
+    |---------------------------------------------------------------------------------------|
+    */
     protected $matakuliah;
+    /*
+    |-----------------------------------------/ Selesai  /----------------------------------|
+    */
+
+
 
 
 
@@ -81,6 +91,8 @@ class MataKuliahController extends Controller
 
 
 
+
+
     /*
     |---------------------------------------------------------------------------------------|
     | Form Tambah Matakuliah
@@ -88,14 +100,64 @@ class MataKuliahController extends Controller
     */
     public function tambah_matakuliah(Request $request)
     {
-        return view('admin.matakuliah.tambah-matakuliah', [
+        $input = [
+            [
+                'length' => 'col-xxl-4 col-xl-6 col-md-6',
+                'title' => 'Kode Matakuliah',
+                'type' => 'text',
+                'name' => 'kode_mk',
+                'placeholder' => 'Kode Matakuliah...'
+            ], [
+                'length' => 'col-xxl-4 col-xl-6 col-md-6',
+                'title' => 'Nama Matakuliah',
+                'type' => 'text',
+                'name' => 'nama_mk',
+                'placeholder' => 'Nama Matakuliah...'
+            ], [
+                'length' => 'col-xxl-4 col-xl-6 col-md-6',
+                'title' => 'Jenis Matakuliah',
+                'type' => 'text',
+                'name' => 'jenis_mk',
+                'placeholder' => 'Jenis Matakuliah...'
+            ], [
+                'length' => 'col-xxl-3 col-xl-6 col-md-6',
+                'title' => 'SKS Tatap Muka',
+                'type' => 'number',
+                'name' => 'sks_tatap_muka',
+                'placeholder' => 'SKS Tatap Muka...'
+            ], [
+                'length' => 'col-xxl-3 col-xl-6 col-md-6',
+                'title' => 'SKS Praktek',
+                'type' => 'number',
+                'name' => 'sks_praktek',
+                'placeholder' => 'SKS Praktek...'
+            ], [
+                'length' => 'col-xxl-3 col-xl-6 col-md-6',
+                'title' => 'SKS Praktek Lapangan',
+                'type' => 'number',
+                'name' => 'sks_praktek_lapangan',
+                'placeholder' => 'SKS Praktek...'
+            ], [
+                'length' => 'col-xxl-3 col-xl-6 col-md-6',
+                'title' => 'SKS Simulasi',
+                'type' => 'number',
+                'name' => 'sks_simulasi',
+                'placeholder' => 'SKS Simulasi...'
+            ],
+        ];
+
+        $link = route('save.matakuliah');
+
+        return view('admin.form.tambah', [
             'page' => 'Tambah Matakuliah',
-            'btnBack' => true
+            'input' => $input,
+            'link' => $link
         ]);
     }
     /*
     |-----------------------------------------/ Selesai  /----------------------------------|
     */
+
 
 
 
@@ -108,7 +170,6 @@ class MataKuliahController extends Controller
     public function save_matakuliah(MatakuliahRules $request)
     {
 
-        $validator = $request->validated();
         $matakuliah = $this->matakuliah;
 
         try {
@@ -144,6 +205,8 @@ class MataKuliahController extends Controller
 
 
 
+
+
     /*
     |---------------------------------------------------------------------------------------|
     |Tampil Edit Matakuliah
@@ -151,12 +214,68 @@ class MataKuliahController extends Controller
     */
     public function edit_matakuliah($id)
     {
-        $matakuliah = $this->matakuliah->where('id_matkul', $id)->first();
+        $mk = $this->matakuliah->where('id_matkul', $id)->first();
 
-        return view('admin.matakuliah.edit_matakuliah', [
-            'btnBack' => true,
+        $input = [
+            [
+                'length' => 'col-xxl-4 col-xl-6 col-md-6',
+                'title' => 'Kode Matakuliah',
+                'type' => 'text',
+                'name' => 'kode_mk',
+                'placeholder' => 'Kode Matakuliah...',
+                'value' => $mk->kode_mk
+            ], [
+                'length' => 'col-xxl-4 col-xl-6 col-md-6',
+                'title' => 'Nama Matakuliah',
+                'type' => 'text',
+                'name' => 'nama_mk',
+                'placeholder' => 'Nama Matakuliah...',
+                'value' => $mk->nama_mk
+            ], [
+                'length' => 'col-xxl-4 col-xl-6 col-md-6',
+                'title' => 'Jenis Matakuliah',
+                'type' => 'text',
+                'name' => 'jenis_mk',
+                'placeholder' => 'Jenis Matakuliah...',
+                'value' => $mk->jenis_mk
+            ], [
+                'length' => 'col-xxl-3 col-xl-6 col-md-6',
+                'title' => 'SKS Tatap Muka',
+                'type' => 'number',
+                'name' => 'sks_tatap_muka',
+                'placeholder' => 'SKS Tatap Muka...',
+                'value' => $mk->sks_tatap_muka
+            ], [
+                'length' => 'col-xxl-3 col-xl-6 col-md-6',
+                'title' => 'SKS Praktek',
+                'type' => 'number',
+                'name' => 'sks_praktek',
+                'placeholder' => 'SKS Praktek...',
+                'value' => $mk->sks_praktek
+            ], [
+                'length' => 'col-xxl-3 col-xl-6 col-md-6',
+                'title' => 'SKS Praktek Lapangan',
+                'type' => 'number',
+                'name' => 'sks_praktek_lapangan',
+                'placeholder' => 'SKS Praktek Lapangan..',
+                'value' => $mk->sks_praktek_lapangan
+            ], [
+                'length' => 'col-xxl-3 col-xl-6 col-md-6',
+                'title' => 'SKS Simulasi',
+                'type' => 'number',
+                'name' => 'sks_simulasi',
+                'placeholder' => 'SKS Simulasi...',
+                'value' => $mk->sks_simulasi
+            ],
+        ];
+
+        $link = route('update.matakuliah', $mk->id_matkul);
+
+        return view('admin.form.edit', [
             'page' => 'Edit Matakuliah',
-            'matakuliah' => $matakuliah
+            'data' => $mk,
+            'input' => $input,
+            'link' => $link
         ]);
     }
     /*
@@ -195,6 +314,7 @@ class MataKuliahController extends Controller
             ]);
         } catch (\Throwable $th) {
             DB::rollBack();
+
             return redirect()->back()->with([
                 'msg' => 'Terjadi Kesalahan.',
                 'type' => 'error'
@@ -217,7 +337,10 @@ class MataKuliahController extends Controller
         $matakuliah = $this->matakuliah->where('id_matkul', $id)->first();
 
         $matakuliah->delete();
-        return redirect()->back()->with(['msg' => 'Data Berhasil Dihapus.', 'type' => 'success']);
+        return redirect()->back()->with([
+            'msg' => 'Data Berhasil Dihapus.',
+            'type' => 'success'
+        ]);
     }
     /*
     |-----------------------------------------/ Selesai  /----------------------------------|
@@ -233,12 +356,101 @@ class MataKuliahController extends Controller
     */
     public function trash_matakuliah()
     {
-        $matakuliah = $this->matakuliah->onlyTrashed()->paginate(10);
+        // $matakuliah = $this->matakuliah->onlyTrashed()->paginate(10);
+
         return view('admin.matakuliah.trash', [
             'page' => 'Trash',
-            'matakuliah' => $matakuliah,
-            'btnBack' => true
+            // 'matakuliah' => $matakuliah,
         ]);
+    }
+    /*
+    |-----------------------------------------/ Selesai  /----------------------------------|
+    */
+
+
+
+
+    /*
+    |---------------------------------------------------------------------------------------|
+    |Generate PDF Matakuliah
+    |
+    |***************************************required****************************************
+    |$data = data yang ingin di Cetak
+    |$thead = memabut Heading Table
+    |$fields= field yang ingin ditampilkan
+    |---------------------------------------------------------------------------------------|
+
+    *********************Config************************
+
+     return [
+        'mode'                       => '',
+        'format'                     => 'A4',
+        'default_font_size'          => '12',
+        'default_font'               => 'sans-serif',
+        'margin_left'                => 10,
+        'margin_right'               => 10,
+        'margin_top'                 => 10,
+        'margin_bottom'              => 10,
+        'margin_header'              => 0,
+        'margin_footer'              => 0,
+        'orientation'                => 'P',
+        'title'                      => 'Laravel mPDF',
+        'author'                     => '',
+        'watermark'                  => '',
+        'show_watermark'             => false,
+        'show_watermark_image'       => false,
+        'watermark_font'             => 'sans-serif',
+        'display_mode'               => 'fullpage',
+        'watermark_text_alpha'       => 0.1,
+        'watermark_image_path'       => '',
+        'watermark_image_alpha'      => 0.2,
+        'watermark_image_size'       => 'D',
+        'watermark_image_position'   => 'P',
+        'custom_font_dir'            => '',
+        'custom_font_data'           => [],
+        'auto_language_detection'    => false,
+        'temp_dir'                   => storage_path('app'),
+        'pdfa'                       => false,
+        'pdfaauto'                   => false,
+        'use_active_forms'           => false,
+    ];
+    */
+
+    public function pdf()
+    {
+        $thead = [
+            '#',
+            'Kode MK',
+            'Nama MK',
+            'Jenis MK',
+            'SKS Tatap Muka',
+            'SKS Praktek',
+            'SKS Praktek Lapangan',
+            'SKS Simulasi',
+            'Prodi'
+        ];
+
+        $fields = [
+            'loopNum',
+            'kode_mk',
+            'nama_mk',
+            'jenis_mk',
+            'sks_tatap_muka',
+            'sks_praktek',
+            'sks_praktek_lapangan',
+            'sks_simulasi',
+            'nama_program_studi'
+        ];
+
+        $data = $this->matakuliah->join('program_studi', 'mata_kuliah.kode_prodi', '=', 'program_studi.kode_prodi')->get();
+        $pdf = FacadePdf::loadView('pages.pdf',  [
+            'data' => $data,
+            'thead' => $thead,
+            'fields' => $fields,
+            'title' => 'Matakuliah',
+        ])->setPaper('legal', 'landscape');
+
+        return $pdf->download();
     }
     /*
     |-----------------------------------------/ Selesai  /----------------------------------|

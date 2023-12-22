@@ -97,7 +97,7 @@ function js_($pakage)
 function linkButton($link = false,  $color = false, $text = false, $icon = false)
 {
     if (!$link) return "";
-    $class = $color ? "class='me-2 btn $color'" : '';
+    $class = $color ? "class=' btn $color'" : '';
     $ic = $icon ? "<i class='fa-solid $icon'></i> " : '';
     $t = $text ?? '';
     return "<a href='$link' $class >$ic $t</a>";
@@ -116,11 +116,11 @@ function getLoop($data, $fields)
                     $str = strstr($opt, '|') ? explode('|', $opt, 2) : $opt;
                     $url = is_array($str) ? route($str[0], $key[$str[1]]) : $str;
                     if ($option == 'edit') {
-                        $table .= linkButton($url, "btn-subtle-primary btn-edit", "", "fa-pen-to-square");
+                        $table .= linkButton($url, "me-2 btn-subtle-primary btn-edit", "", "fa-pen-to-square");
                     } elseif ($option == 'delete') {
-                        $table .= linkButton($url, "btn-subtle-danger btn-delete", "", "fa-trash");
+                        $table .= linkButton($url, "me-2 btn-subtle-danger btn-delete", "", "fa-trash");
                     } elseif ($option == 'show') {
-                        $table .= linkButton($url, "btn-subtle-info btn-show", "", "fa-eye");
+                        $table .= linkButton($url, "me-2 btn-subtle-info btn-show", "", "fa-eye");
                     }
                 }
             } elseif (!$record) {

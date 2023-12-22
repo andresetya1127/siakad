@@ -10,6 +10,7 @@ class tbl_mk_kurikulum extends Model
     use HasFactory;
     protected $table = "tbl_mk_kurikulum";
     protected $primaryKey = "id_mk_kur";
+    public $timestamps = false;
 
     /**
      * Get all of the comments for the tbl_mk_kurikulum

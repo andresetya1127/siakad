@@ -1,3 +1,5 @@
+
+
 try {
     $('.select2').select2({
         theme: 'bootstrap4',
@@ -81,5 +83,46 @@ var sesi = $('#session-get');
 
 if (!sesi.attr('data-value') == '' | !sesi.attr('data-value') == null) {
     Sweat_alert(sesi.attr('data-type'), sesi.attr('data-value'));
+}
+
+
+
+function fetchLog() {
+    $.ajax({
+        'type': 'GET',
+        'url': '/get-logs-all',
+        success: function (r) {
+            let logContainer = $('#logContainer');
+
+            logContainer.html(r.log);
+            logContainer.removeClass('text-center')
+        }
+    })
+}
+function logScroll() {
+    let scroll = $('#auto-scroll').hasClass('scroll-on');
+    if (scroll) {
+        let logContainer = $('#logContainer');
+        logContainer.scrollTop(logContainer[0].scrollHeight);
+    }
+
+
+}
+
+$('#auto-scroll').on('click', function () {
+    if ($(this).hasClass('scroll-on')) {
+        $(this).removeClass('scroll-on btn-subtle-success').addClass('scroll-off btn-subtle-danger').text('Auto Scroll: Off');
+    } else {
+        $(this).removeClass('scroll-off btn-subtle-danger').addClass('scroll-on btn-subtle-success').text('Auto Scroll: on');
+    }
+});
+
+try {
+    setInterval(function () {
+        fetchLog();
+        logScroll();
+    }, 2000);
+} catch (error) {
+
 }
 

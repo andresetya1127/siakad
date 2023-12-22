@@ -10,7 +10,7 @@
             <div class="card-body">
                 <div class="text-end my-3">
                     @php
-                        echo linkButton(route('admin.index'), 'btn-subtle-success', 'Tambah', 'fa-plus');
+                        echo linkButton(route('add.mhs'), 'btn-subtle-success', 'Tambah', 'fa-plus');
                     @endphp
                 </div>
 
@@ -22,9 +22,8 @@
                         <tbody>
                             {{ getLoop($mahasiswa, [
                                 'option' => [
-                                    'show' => true,
+                                    'show' => 'mhs.detail|id_mahasiswa',
                                     'edit' => 'lin',
-                                    'delete' => true,
                                 ],
                                 'nm_pd|link' => 'mhs.detail|id_mahasiswa',
                                 'tmpt_lahir' => true,
@@ -37,6 +36,18 @@
                         </tbody>
                     </table>
                 </div>
+
+                <!--Pagination -->
+                <div class="d-flex justify-content-between mt-4">
+                    <div class="">
+                        <span>Showing <b>{{ $mahasiswa->currentPage() * $mahasiswa->count() }}</b> of
+                            <b> {{ $mahasiswa->total() }}</b> Data.
+                        </span>
+                    </div>
+                    {{ $mahasiswa->links() }}
+                </div>
+                <!--End Pagination -->
+
             </div>
         </div>
     </div>

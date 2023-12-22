@@ -21,9 +21,9 @@ class MatakuliahRules extends FormRequest
      */
     public function rules(): array
     {
-        $id_mk = $this->route('id_mk');
+        $param = $this->route('id_mk');
         return [
-            'kode_mk' => 'required|min:3|max:10|unique:mata_kuliah,kode_mk,' . $id_mk . ',id_matkul',
+            'kode_mk' => 'alpha_num|required|min:3|max:10|unique:mata_kuliah,kode_mk,' . $param . ',id_matkul',
             'nama_mk' => 'required|min:3|max:100',
             'jenis_mk' => 'required|size:1|uppercase',
             'sks_tatap_muka' => 'required|numeric',
@@ -35,9 +35,10 @@ class MatakuliahRules extends FormRequest
 
     public function messages()
     {
-        $id_mk = $this->route('update.matakuliah');
+        $param = $this->route('update.matakuliah');
 
         return [
+            '*.alpha_num' => 'Form Hanya Boleh berisi Angka Dan Huruf.',
             '*.required' => 'Form Wajib Diisi.',
             '*.min' => 'Form Min. :min karakter.',
             '*.max' => 'Form Max. :max karakter.',

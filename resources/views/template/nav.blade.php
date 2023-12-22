@@ -56,7 +56,6 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
                     aria-labelledby="page-header-search-dropdown">
-
                     <form class="p-3">
                         <div class="m-0">
                             <div class="input-group">
@@ -68,6 +67,15 @@
                     </form>
                 </div>
             </div>
+
+            <!-- Message -->
+            <div class="dropdown d-none d-lg-inline-block">
+                <a href="" type="button" class="btn header-item noti-icon waves-effect">
+                    <i class="mdi mdi-forum"></i>
+                    <span class="badge bg-danger rounded-pill">2</span>
+                </a>
+            </div>
+
 
             <!-- Notification -->
             <div class="dropdown d-inline-block">
@@ -120,7 +128,7 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="#"><i
+                    <a class="dropdown-item" href="{{ route('profile') }}"><i
                             class="dripicons-user d-inline-block text-muted me-2"></i>
                         Profile</a>
                     <a class="dropdown-item" href="#"><i

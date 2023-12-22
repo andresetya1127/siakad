@@ -1,27 +1,31 @@
 @extends('template.template')
 
-@php
-$stp = $kurikulum->mk_kurikulum->sum('sks_tatap_muka');
-$sp = $kurikulum->mk_kurikulum->sum('sks_praktek');
-$spl = $kurikulum->mk_kurikulum->sum('sks_praktek_lapangan');
-$ss = $kurikulum->mk_kurikulum->sum('sks_simulasi');
-$number = ($mk_kur->currentPage() - 1) * $mk_kur->perPage() + 1;
-@endphp
-
+@section('content')
+    <!-- | Aseet | -->
 @section('custom_style')
-{{ css_(['select2', 'select-bootstrap']) }}
+    {{ css_(['select2', 'select-bootstrap']) }}
 @endsection
 
 @section('custom_script')
-{{ js_(['sweatalert', 'select2','tempory']) }}
+    {{ js_(['sweatalert', 'select2', 'tempory']) }}
 @endsection
+<!-- || -->
 
+<!-- | counter | -->
+@php
+    $stp = $kurikulum->mk_kurikulum->sum('sks_tatap_muka');
+    $sp = $kurikulum->mk_kurikulum->sum('sks_praktek');
+    $spl = $kurikulum->mk_kurikulum->sum('sks_praktek_lapangan');
+    $ss = $kurikulum->mk_kurikulum->sum('sks_simulasi');
+    $number = ($mk_kur->currentPage() - 1) * $mk_kur->perPage() + 1;
+@endphp
+<!-- || -->
 
-@section('content')
-
+<!-- | Card Counter | -->
 @include('admin.kurikulum.card-counter')
+<!-- || -->
 
-<!--  -->
+<!-- | Detail Kurikulum | -->
 <div class="col-12">
     <div class="card h-100 animate__animated animate__fadeInRight animate__faster">
         <div class="card-body ">
@@ -42,13 +46,15 @@ $number = ($mk_kur->currentPage() - 1) * $mk_kur->perPage() + 1;
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
                     <label class="form-label pt-0">Program Studi</label>
                     <div class="">
-                        <input class="form-control" type="text" value="{{ $kurikulum->prodi->nama_program_studi }}" readonly>
+                        <input class="form-control" type="text" value="{{ $kurikulum->prodi->nama_program_studi }}"
+                            readonly>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
                     <label class="form-label pt-0">Jumlah Bobot SKS Pilihan</label>
                     <div class="">
-                        <input class="form-control" type="text" value="{{ $kurikulum->jumlah_sks_pilihan }}" readonly>
+                        <input class="form-control" type="text" value="{{ $kurikulum->jumlah_sks_pilihan }}"
+                            readonly>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
@@ -60,24 +66,31 @@ $number = ($mk_kur->currentPage() - 1) * $mk_kur->perPage() + 1;
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
                     <label class="form-label pt-0">Masa Berlaku</label>
                     <div class="">
-                        <input class="form-control" type="text" value="{{ $kurikulum->semester->nama_semester }}" readonly>
+                        <input class="form-control" type="text" value="{{ $kurikulum->semester->nama_semester }}"
+                            readonly>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- -->
+<!-- || -->
 
-<!-- -->
+<!-- | Tabel Matakuliah Kurikulum | -->
 <div class="col-12 mt-4">
     <div class="card animate__animated animate__fadeInRight animate__fast">
         <div class="card-body">
 
             <div class="text-end mb-3">
-                <button type="button" class="btn btn-subtle-success" data-bs-toggle="modal" data-bs-target="#add-mk">
+                <button type="button" class="me-2 btn btn-subtle-success" data-bs-toggle="modal"
+                    data-bs-target="#add-mk">
                     <i class="fa fa-plus"></i> Matakuliah
                 </button>
+                @php
+                    echo linkButton(route('pdf.kur.matakuliah', $kurikulum->id_kurikulum), 'me-2 btn-subtle-primary', 'PDF', 'fa-file-pdf');
+                    echo linkButton('ss', 'me-2 btn-subtle-primary', 'Excel', 'fa-file-csv');
+                @endphp
+
             </div>
 
             <div class="table-responsive">
@@ -108,32 +121,31 @@ $number = ($mk_kur->currentPage() - 1) * $mk_kur->perPage() + 1;
 
                     <tbody>
                         @foreach ($mk_kur as $mk)
-                        <tr>
-                            <td class="text-center">{{ $number++ }}</td>
-                            <td>{{ $mk->kode_mk }}</td>
-                            <td>{{ $mk->matakuliah->nama_mk }}</td>
-                            <td class="text-center">
-                                {{ $mk->matakuliah->sks_tatap_muka + $mk->matakuliah->sks_praktek_lapangan + $mk->matakuliah->sks_simulasi }}
-                            </td>
-                            <td class="text-center">{{ $mk->matakuliah->sks_tatap_muka }}</td>
-                            <td class="text-center">{{ $mk->matakuliah->sks_praktek }}</td>
-                            <td class="text-center">{{ $mk->matakuliah->sks_praktek_lapangan }}</td>
-                            <td class="text-center">
-                                {{ $mk->matakuliah->sks_simulasi !== null ? $mk->matakuliah->sks_simulasi : '0' }}
-                            </td>
-                            <td class="text-center">{{ $mk->semester }}</td>
-                            <td class="text-center">
-                                @php
-                                echo linkButton(route('delete.kur.matakuliah', [$mk->id_mk_kur, $mk->id_kurikulum]), 'btn btn-subtle-danger', '', 'fa-trash');
-                                @endphp
-                            </td>
-                        </tr>
+                            <tr>
+                                <td class="text-center">{{ $number++ }}</td>
+                                <td>{{ $mk->kode_mk }}</td>
+                                <td>{{ $mk->matakuliah->nama_mk }}</td>
+                                <td class="text-center">
+                                    {{ $mk->matakuliah->sks_tatap_muka + $mk->matakuliah->sks_praktek_lapangan + $mk->matakuliah->sks_simulasi }}
+                                </td>
+                                <td class="text-center">{{ $mk->matakuliah->sks_tatap_muka }}</td>
+                                <td class="text-center">{{ $mk->matakuliah->sks_praktek }}</td>
+                                <td class="text-center">{{ $mk->matakuliah->sks_praktek_lapangan }}</td>
+                                <td class="text-center">
+                                    {{ $mk->matakuliah->sks_simulasi !== null ? $mk->matakuliah->sks_simulasi : '0' }}
+                                </td>
+                                <td class="text-center">{{ $mk->semester }}</td>
+                                <td class="text-center">
+                                    @php
+                                        echo linkButton(route('delete.kur.matakuliah', [$mk->id_mk_kur, $mk->id_kurikulum]), 'btn btn-subtle-danger btn-delete', '', 'fa-trash');
+                                    @endphp
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
 
-                <!--Pagination -->
-                <div class="d-flex justify-content-between mt-4">
+                <div class="d-flex justify-content-between mt-4" id="pagination">
                     <div class="">
                         <span>Showing <b>{{ $mk_kur->currentPage() * $mk_kur->count() }}</b> of
                             <b> {{ $mk_kur->total() }}</b> Data.
@@ -141,7 +153,6 @@ $number = ($mk_kur->currentPage() - 1) * $mk_kur->perPage() + 1;
                     </div>
                     {{ $mk_kur->links() }}
                 </div>
-                <!--End Pagination -->
 
             </div>
 
@@ -162,16 +173,18 @@ $number = ($mk_kur->currentPage() - 1) * $mk_kur->perPage() + 1;
                         <div class="row">
                             <div class="col-7">
                                 <div class="mb-3">
-                                    <select name="matakuliah" id="matakuliah" class="select2 form-control" style="width: 100%;" required>
+                                    <select name="matakuliah" id="matakuliah" class="select2 form-control"
+                                        style="width: 100%;" required>
                                         <option selected>Program Studi</option>
                                         @foreach ($matakuliah as $mk)
-                                        <option value="{{ $mk->kode_mk }}">{{ $mk->nama_mk }}</option>
+                                            <option value="{{ $mk->kode_mk }}">{{ $mk->nama_mk }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="col-3">
-                                <input type="number" name="semester" id="semester" class="form-control" placeholder="Semester..." required>
+                                <input type="number" name="semester" id="semester" class="form-control"
+                                    placeholder="Semester..." required>
                             </div>
                             <div class="col-2">
                                 <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i></button>
@@ -183,7 +196,8 @@ $number = ($mk_kur->currentPage() - 1) * $mk_kur->perPage() + 1;
                     <div class="row">
                         <div class="col-12">
                             <div class="table-responsive">
-                                <form method="POST" id="form-matakuliah" action="{{ route('save.kur.matakuliah', [$kurikulum->id_kurikulum, $kurikulum->id_prodi]) }}">
+                                <form method="POST" id="form-matakuliah"
+                                    action="{{ route('save.kur.matakuliah', [$kurikulum->id_kurikulum, $kurikulum->id_prodi]) }}">
                                     @csrf
                                     <table class="table table-hover table-bordered mt-3" id="tbl-tempory">
                                         <thead>
@@ -223,5 +237,5 @@ $number = ($mk_kur->currentPage() - 1) * $mk_kur->perPage() + 1;
     <!-- end modal -->
 
 </div>
-<!-- -->
+<!-- || -->
 @endsection

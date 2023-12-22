@@ -30,7 +30,7 @@ class tbl_kurikulum extends Model
      */
     public function prodi()
     {
-        return $this->hasOne(tbl_prodi::class, 'kode_program_studi', 'id_prodi');
+        return $this->hasOne(tbl_prodi::class, 'kode_prodi', 'id_prodi');
     }
     /**
      * Get all of the comments for the tbl_semester

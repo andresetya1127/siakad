@@ -1,0 +1,49 @@
+[2023-12-18 20:59:49] local.INFO: User Mencoba Login {"user":"andre"} 
+[2023-12-19 07:33:23] local.INFO: User Telash Login {"user":"andre"} 
+[2023-12-20 04:17:01] local.INFO: User Telah Login {"user":"andre"} 
+[2023-12-20 04:25:05] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh"} 
+[2023-12-20 04:25:23] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh"} 
+[2023-12-20 04:25:28] local.WARNING: User Gagal Menambahkan Kurikulum {"user":"andre","Error":"Data Belum Lengkap"} 
+[2023-12-20 04:25:28] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh"} 
+[2023-12-20 04:25:38] local.INFO: User Berhasil Menambahkan Kurikulum {"user":"andre","data":{"_token":"OXgGleIDrO7AsbnOuTy2P7aQEdtAv8AIhBDCryuz","kode_mk":["TK436"],"semester":["2"]}} 
+[2023-12-20 04:25:38] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh"} 
+[2023-12-20 04:26:27] local.ERROR: Terjadi Kesalahan {"user":"andre","ID":"97"} 
+[2023-12-20 04:26:27] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh"} 
+[2023-12-20 04:26:31] local.ERROR: Terjadi Kesalahan {"user":"andre","ID":"96"} 
+[2023-12-20 04:26:31] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh"} 
+[2023-12-20 04:26:35] local.ERROR: Terjadi Kesalahan {"user":"andre","ID":"95"} 
+[2023-12-20 04:26:35] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh"} 
+[2023-12-20 04:27:48] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh"} 
+[2023-12-20 04:31:27] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh"} 
+[2023-12-20 04:31:31] local.WARNING: User Berhasil Menghapus Matakuliah Kurikulum {"user":"andre","ID":"0f0840fd-6095-4f32-a2bd-01c9dba29e86"} 
+[2023-12-20 04:31:31] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh"} 
+[2023-12-20 05:22:11] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh"} 
+[2023-12-20 05:22:48] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh"} 
+[2023-12-20 05:22:53] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh"} 
+[2023-12-20 05:33:41] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh"} 
+[2023-12-20 05:33:49] local.INFO: User Berhasil Menambahkan Kurikulum {"user":"andre","data":{"_token":"OXgGleIDrO7AsbnOuTy2P7aQEdtAv8AIhBDCryuz","kode_mk":["TK436"],"semester":["2"]}} 
+[2023-12-20 05:33:49] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh"} 
+[2023-12-20 05:36:08] local.INFO: User Berhasil LogOut {"user":"andre"} 
+[2023-12-20 05:37:35] local.INFO: User Telah Login {"user":"andre"} 
+[2023-12-20 05:53:07] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh saja"} 
+[2023-12-20 05:53:12] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Kurikulum 2014"} 
+[2023-12-20 05:53:18] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Kurikulum 2023"} 
+[2023-12-20 05:53:25] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Kurikulum 2019"} 
+[2023-12-20 05:53:57] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh saja"} 
+[2023-12-20 05:54:14] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh saja"} 
+[2023-12-20 06:19:47] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh saja"} 
+[2023-12-21 05:01:18] local.INFO: User Telah Login {"user":"andre"} 
+[2023-12-21 05:01:45] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh saja"} 
+[2023-12-21 06:40:54] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh saja"} 
+[2023-12-21 06:54:35] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh saja"} 
+[2023-12-21 06:55:58] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh saja"} 
+[2023-12-21 06:57:19] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh saja"} 
+[2023-12-21 06:57:57] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh saja"} 
+[2023-12-21 06:59:42] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Contoh saja"} 
+[2023-12-21 07:00:09] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Kurikulum 2019"} 
+[2023-12-21 07:00:17] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Kurikulum 2019"} 
+[2023-12-21 07:00:20] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Kurikulum 2019"} 
+[2023-12-21 07:05:39] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Kurikulum 2019"} 
+[2023-12-21 07:08:27] local.INFO: User Melihat Detail Kurikulum {"user":"andre","Kurikulum":"Kurikulum 2019"} 
+[2023-12-22 06:16:04] local.INFO: User Telah Login {"user":"andre"} 
+[2023-12-22 06:18:47] local.INFO: User Mencoba Untuk Mengubah Kelas Kuliah {"user":"andre","old":{"App\\Models\\tbl_kelas_kuliah":{"id_kelas":"81fcd4fb-93e1-45b9-b2f9-27253ead3dc9","semester":"20043","kode_mk":"TK436","nama_kelas":"1","bahasan":null,"kelas_kampus_merdeka":0,"lingkup_kelas":"External","mode_kuliah":"Daring","kode_prodi":"55201","created_at":"2023-12-18 03:22:30","updated_at":"2023-12-18 03:27:43"}},"new":{"_method":"PUT","_token":"Mob3e4Ic6VD8DMrL7idMob8shPSyVUbMo12IGOYF","prodi":"55201","semester":"20043","matakuliah":"TK436","nm_kelas":"1","lingkup_kelas":"External","mode_kuliah":"Daring","tgl_aktif":null,"tgl_akhir":null}} 

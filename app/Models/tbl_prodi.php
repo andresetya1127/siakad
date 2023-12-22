@@ -9,7 +9,7 @@ class tbl_prodi extends Model
 {
     use HasFactory;
     protected $table = 'program_studi';
-    protected $primaryKey = 'kode_program_studi';
+    protected $primaryKey = 'kode_prodi';
 
     public function kurikulum()
     {

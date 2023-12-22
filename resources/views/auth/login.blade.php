@@ -39,8 +39,11 @@
                                         <span class="input-group-text" id="basic-addon1">
                                             <span class="mdi mdi-account"></span>
                                         </span>
-                                        <input type="text" class="form-control" name="email"
-                                            placeholder="Masukkan email">
+                                        <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                            name="email" placeholder="Masukkan email" value="{{ old('email') }}">
+                                        @error('email')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -51,8 +54,12 @@
                                     <div class="input-group">
                                         <span class="input-group-text" id="basic-addon2">
                                             <span class="mdi mdi-key-variant"></span></span>
-                                        <input type="password" class="form-control" name="password"
+                                        <input type="password"
+                                            class="form-control @error('password') is-invalid @enderror" name="password"
                                             placeholder="Masukkan Password">
+                                        @error('password')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -60,13 +67,19 @@
                                     <span id="target_captcha"> {!! captcha_img() !!}</span>
 
                                     <div class="input-group">
-                                        <input type="number" class="form-control" name="captcha" placeholder="Captcha">
+                                        <input type="number"
+                                            class="form-control  @error('captcha') is-invalid @enderror" name="captcha"
+                                            placeholder="Captcha">
+                                        @error('captcha')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <button class="btn btn-warning" type="button" id="reloadCaptcha">
                                         <span class="mdi mdi-reload"></span>
                                     </button>
                                 </div>
+
                                 <!-- end row -->
                                 <div class="mb-3 mb-0 row">
                                     <div class="col-12 mt-2">

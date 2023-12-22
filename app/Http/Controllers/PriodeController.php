@@ -12,14 +12,12 @@ class PriodeController extends Controller
     |Index Setting Priode
     |---------------------------------------------------------------------------------------|
     */
-
     public function index()
     {
         return view('admin.priode.priode', [
-            'page' => 'Atur Priode',
+            'page' => 'Pengaturan',
         ]);
     }
-
     /*
     |-----------------------------------------/ Selesai  /----------------------------------|
     */
